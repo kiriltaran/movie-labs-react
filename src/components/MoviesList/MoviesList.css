@@ -1,0 +1,12 @@
+.movies-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.movies-item {
+  margin-bottom: 20px;
+}
+
+.movies-item:not(:nth-child(5n)) {
+  margin-right: 10px;
+}

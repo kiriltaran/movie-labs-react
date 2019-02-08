@@ -1,0 +1,27 @@
+.app-header {
+  height: 60px;
+  line-height: 60px;
+  padding: 0 20px;
+  background-color: #282c34;
+  display: flex;
+  color: #fff;
+}
+
+.title {
+  margin-right: 100px;
+}
+
+.nav {
+  display: flex;
+}
+
+.nav-item {
+  min-width: 100px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+}
+
+.nav-item:not(:last-child) {
+  margin-right: 10px;
+}

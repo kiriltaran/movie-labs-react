@@ -2,12 +2,9 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    jest: true,
   },
-  parserOptions: {
-    parser: 'babel-eslint',
-    sourceType: 'module',
-  },
+  parser: 'babel-eslint',
+  plugins: ['babel'],
   extends: ['airbnb', 'plugin:prettier/recommended', 'prettier/react'],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -25,5 +22,6 @@ module.exports = {
         extensions: ['.js', '.jsx'],
       },
     ],
+    'import/prefer-default-export': 'off',
   },
 }
