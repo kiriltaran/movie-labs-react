@@ -1,33 +1,32 @@
 import React, { Component } from 'react'
 import api from '../../api'
 
-import MoviesList from '../MoviesList'
+import MoviesList from '../../components/MoviesList'
 
 class PopularMovies extends Component {
   state = {
     popularMovies: [],
-    totalPages: 0,
+    // totalPages: 0,
   }
 
   componentDidMount() {
     this.fetchPopularMovies()
   }
 
+  handlePageClick = ({ selected }) => {
+    this.fetchPopularMovies(selected)
+  }
+
   async fetchPopularMovies(pageNumber) {
     try {
       // eslint-disable-next-line camelcase
-      const { results, total_pages } = await api.movies.fetchPopular({ page: pageNumber })
+      const { results } = await api.movies.fetchPopular({ page: pageNumber })
       this.setState({
         popularMovies: results,
-        totalPages: total_pages,
       })
     } catch (error) {
       console.log(error)
     }
-  }
-
-  handlePageClick = ({ selected }) => {
-    this.fetchPopularMovies(selected)
   }
 
   render() {

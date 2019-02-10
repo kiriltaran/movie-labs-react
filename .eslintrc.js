@@ -4,8 +4,11 @@ module.exports = {
     browser: true,
   },
   parser: 'babel-eslint',
-  plugins: ['babel'],
+  parserOptions: {
+    sourceType: 'module',
+  },
   extends: ['airbnb', 'plugin:prettier/recommended', 'prettier/react'],
+  plugins: ['babel'],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',

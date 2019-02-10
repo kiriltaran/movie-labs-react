@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import api from '../../api'
 
-import MoviesList from '../MoviesList'
+import MoviesList from '../../components/MoviesList'
 
 class UpcomingMovies extends Component {
   state = {
@@ -10,6 +10,10 @@ class UpcomingMovies extends Component {
 
   componentDidMount() {
     this.fetchUpcomingMovies()
+  }
+
+  handlePageClick = ({ selected }) => {
+    this.fetchUpcomingMovies(selected)
   }
 
   async fetchUpcomingMovies(pageNumber) {
@@ -22,10 +26,6 @@ class UpcomingMovies extends Component {
     } catch (error) {
       console.log(error)
     }
-  }
-
-  handlePageClick = ({ selected }) => {
-    this.fetchUpcomingMovies(selected)
   }
 
   render() {

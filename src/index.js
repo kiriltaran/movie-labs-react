@@ -1,11 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import AppHeader from './components/AppHeader'
-import PopularMovies from './components/PopularMovies'
-import UpcomingMovies from './components/UpcomingMovies'
-import FavoritesMovies from './components/FavoritesMovies'
+import IndexPage from './pages/index'
+import NotFoundPage from './pages/404'
+import PopularMoviesPage from './pages/movies/popular'
+import UpcomingMoviesPage from './pages/movies/upcoming'
+import FavoritesMoviesPage from './pages/movies/favorites'
+import MoviePage from './pages/movies/_id'
 
 import './index.css'
 
@@ -16,9 +19,14 @@ ReactDOM.render(
     <div className="app">
       <AppHeader />
       <main className="content">
-        <Route path="/" exact component={PopularMovies} />
-        <Route path="/upcoming" component={UpcomingMovies} />
-        <Route path="/favorites" component={FavoritesMovies} />
+        <Switch>
+          <Route path="/" exact component={IndexPage} />
+          <Route path="/movies/popular" component={PopularMoviesPage} />
+          <Route path="/movies/upcoming" component={UpcomingMoviesPage} />
+          <Route path="/movies/favorites" component={FavoritesMoviesPage} />
+          <Route path="/movies/:id" component={MoviePage} />
+          <Route component={NotFoundPage} />
+        </Switch>
       </main>
     </div>
   </BrowserRouter>,

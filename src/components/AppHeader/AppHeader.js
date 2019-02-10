@@ -7,15 +7,15 @@ class AppHeader extends Component {
     navItems: [
       {
         title: 'Popular',
-        path: '/',
+        path: '/movies/popular',
       },
       {
         title: 'Upcoming',
-        path: '/upcoming',
+        path: '/movies/upcoming',
       },
       {
         title: 'Favorites',
-        path: '/favorites',
+        path: '/movies/favorites',
       },
     ],
   }

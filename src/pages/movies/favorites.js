@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import MoviesList from '../MoviesList'
+import MoviesList from '../../components/MoviesList'
 
 class FavoritesMovies extends Component {
   state = {
