@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import MoviesList from '../../components/MoviesList'
 
-class FavoritesMovies extends Component {
+class FavoritesMoviesPage extends Component {
   state = {
     movies: [
       { title: 1 },
@@ -21,12 +21,10 @@ class FavoritesMovies extends Component {
 
     return (
       <section className="favorites-movies">
-        <div className="container-fluid">
-          <MoviesList movies={movies} />
-        </div>
+        <MoviesList movies={movies} />
       </section>
     )
   }
 }
 
-export default FavoritesMovies
+export default FavoritesMoviesPage

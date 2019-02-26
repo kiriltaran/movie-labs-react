@@ -2,26 +2,33 @@
   height: 60px;
   line-height: 60px;
   padding: 0 20px;
-  background-color: #282c34;
+  border-bottom: solid 1px #ddd;
   display: flex;
-  color: #fff;
 }
 
-.title {
-  margin-right: 100px;
+.logo {
+  margin-right: 30px;
+}
+
+.logo__img {
+  height: 60px;
 }
 
 .nav {
   display: flex;
 }
 
-.nav-item {
+.nav__item {
+  color: #333;
   min-width: 100px;
-  color: #fff;
   text-align: center;
   text-decoration: none;
 }
 
-.nav-item:not(:last-child) {
+.nav__item--active {
+  border-bottom: 2px solid #1bb4dd;
+}
+
+.nav__item:not(:last-child) {
   margin-right: 10px;
 }

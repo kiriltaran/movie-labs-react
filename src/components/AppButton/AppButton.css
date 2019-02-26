@@ -1,0 +1,16 @@
+.app-button {
+  white-space: nowrap;
+  cursor: pointer;
+  background: #fff;
+  border: 2px solid #dcdfe6;
+  border-color: #dcdfe6;
+  color: #606266;
+  text-align: center;
+  outline: none;
+  margin: 0;
+  transition: 0.1s;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 4px;
+}

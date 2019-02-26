@@ -1,23 +1,24 @@
 import React, { Component } from 'react'
+import Pagination from 'react-js-pagination'
 import api from '../../api'
 
 import MoviesList from '../../components/MoviesList'
 
-class PopularMovies extends Component {
+class PopularMoviesPage extends Component {
   state = {
     popularMovies: [],
-    // totalPages: 0,
+    activePage: 1,
   }
 
-  componentDidMount() {
-    this.fetchPopularMovies()
+  async componentDidMount() {
+    await this.fetchPopularMoviesPage()
   }
 
-  handlePageClick = ({ selected }) => {
-    this.fetchPopularMovies(selected)
+  handlePageChange = pageNumber => {
+    this.fetchPopularMoviesPage(pageNumber)
   }
 
-  async fetchPopularMovies(pageNumber) {
+  async fetchPopularMoviesPage(pageNumber) {
     try {
       // eslint-disable-next-line camelcase
       const { results } = await api.movies.fetchPopular({ page: pageNumber })
@@ -30,16 +31,21 @@ class PopularMovies extends Component {
   }
 
   render() {
-    const { popularMovies } = this.state
+    const { popularMovies, activePage } = this.state
 
     return (
       <section className="popular-movies">
-        <div className="container-fluid">
-          <MoviesList movies={popularMovies} />
-        </div>
+        <MoviesList movies={popularMovies} />
+        <Pagination
+          activePage={activePage}
+          itemsCountPerPage={10}
+          totalItemsCount={450}
+          pageRangeDisplayed={5}
+          onChange={this.handlePageChange}
+        />
       </section>
     )
   }
 }
 
-export default PopularMovies
+export default PopularMoviesPage

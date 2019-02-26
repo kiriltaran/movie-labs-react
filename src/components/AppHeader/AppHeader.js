@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import './AppHeader.css'
+
+import logoImg from '../../assets/logo.png'
 
 class AppHeader extends Component {
   state = {
@@ -24,12 +26,19 @@ class AppHeader extends Component {
     const { navItems } = this.state
     return (
       <header className="app-header">
-        <div className="title">Movie Labs</div>
+        <Link to="/" className="logo">
+          <img src={logoImg} alt="logo" className="logo__img" />
+        </Link>
         <nav className="nav">
           {navItems.map(navItem => (
-            <Link to={navItem.path} key={navItem.path} className="nav-item">
+            <NavLink
+              to={navItem.path}
+              key={navItem.path}
+              activeClassName="nav__item--active"
+              className="nav__item"
+            >
               {navItem.title}
-            </Link>
+            </NavLink>
           ))}
         </nav>
       </header>

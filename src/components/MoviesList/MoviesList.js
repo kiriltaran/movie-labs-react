@@ -1,18 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+// import { Link } from 'react-router-dom'
 import './MoviesList.css'
 
 import AppCard from '../AppCard'
+import AppButton from '../AppButton'
 
 function MoviesList({ movies }) {
   return (
     <div className="movies-list">
       {movies.map(movie => (
-        <div className="movies-item" key={movie.id}>
+        <div className="movies-list__item" key={movie.id}>
           <AppCard>
-            <img src={`http://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt="movie-poster" />
-            <h2>{movie.title}</h2>
-            <div>{movie.vote_average}</div>
+            <div className="item-content">
+              <div className="item-content__poster">
+                <img
+                  src={`http://image.tmdb.org/t/p/w185/${movie.poster_path}`}
+                  className="poster-image"
+                  alt="poster"
+                />
+              </div>
+              <div className="item-content__tile">
+                <div className="tile-info">
+                  <div className="tile-info__title">{movie.title}</div>
+                  <div className="tile-info__vote">{movie.vote_average}</div>
+                </div>
+                <div className="tile-button">
+                  <AppButton to={`/movies/${movie.id}`}>More</AppButton>
+                </div>
+              </div>
+            </div>
           </AppCard>
         </div>
       ))}

@@ -1,0 +1,28 @@
+.movie-details {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+.info-item {
+  margin-bottom: 1rem;
+  display: flex;
+}
+
+.info-item__key {
+  font-style: italic;
+  min-width: 150px;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.genre:not(:last-child) {
+  margin-right: 5px;
+}
+
+.country:not(:last-child):after {
+  content: ', ';
+}

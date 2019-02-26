@@ -4,30 +4,32 @@ export default class Movies {
   }
 
   async fetchPopular({ page = 1 }) {
-    try {
-      const { data } = await this.http.get('/movie/popular', {
-        params: {
-          page,
-        },
-      })
+    const { data } = await this.http.get('/movie/popular', {
+      params: {
+        page,
+      },
+    })
 
-      return data
-    } catch (err) {
-      throw err
-    }
+    return data
   }
 
   async fetchUpcoming({ page = 1 }) {
-    try {
-      const { data } = await this.http.get('/movie/upcoming', {
-        params: {
-          page,
-        },
-      })
+    const { data } = await this.http.get('/movie/upcoming', {
+      params: {
+        page,
+      },
+    })
 
-      return data
-    } catch (err) {
-      throw err
-    }
+    return data
+  }
+
+  async fetchMovieDetails(id) {
+    const { data } = await this.http.get(`/movie/${id}`, {
+      params: {
+        movie_id: id,
+      },
+    })
+
+    return data
   }
 }

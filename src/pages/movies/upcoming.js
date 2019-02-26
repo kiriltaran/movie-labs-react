@@ -3,20 +3,20 @@ import api from '../../api'
 
 import MoviesList from '../../components/MoviesList'
 
-class UpcomingMovies extends Component {
+class UpcomingMoviesPage extends Component {
   state = {
     upcomingMovies: [],
   }
 
-  componentDidMount() {
-    this.fetchUpcomingMovies()
+  async componentDidMount() {
+    await this.fetchUpcomingMoviesPage()
   }
 
   handlePageClick = ({ selected }) => {
-    this.fetchUpcomingMovies(selected)
+    this.fetchUpcomingMoviesPage(selected)
   }
 
-  async fetchUpcomingMovies(pageNumber) {
+  async fetchUpcomingMoviesPage(pageNumber) {
     try {
       // eslint-disable-next-line camelcase
       const { results } = await api.movies.fetchUpcoming({ page: pageNumber })
@@ -33,12 +33,10 @@ class UpcomingMovies extends Component {
 
     return (
       <section className="Upcoming-movies">
-        <div className="container-fluid">
-          <MoviesList movies={upcomingMovies} />
-        </div>
+        <MoviesList movies={upcomingMovies} />
       </section>
     )
   }
 }
 
-export default UpcomingMovies
+export default UpcomingMoviesPage

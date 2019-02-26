@@ -1,11 +1,7 @@
 import React from 'react'
 
 const IndexPage = () => {
-  return (
-    <section className="Upcoming-movies">
-      <div className="container-fluid">Index page</div>
-    </section>
-  )
+  return <section className="Upcoming-movies">Index page</section>
 }
 
 export default IndexPage
