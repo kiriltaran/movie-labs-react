@@ -1,3 +1,4 @@
-import AxiosClient from './AxiosClient'
+import mdbClient from './mdbClient'
+import firebaseClient from './firebaseClient'
 
-export { AxiosClient }
+export { mdbClient, firebaseClient }

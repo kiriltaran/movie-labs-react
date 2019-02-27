@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { ROUTES } from './constants'
 import './App.css'
 
 import AppHeader from './components/AppHeader'
@@ -17,11 +18,11 @@ function App() {
         <AppHeader />
         <main className="main">
           <Switch>
-            <Route path="/" exact component={IndexPage} />
-            <Route path="/movies/popular" component={PopularMoviesPage} />
-            <Route path="/movies/upcoming" component={UpcomingMoviesPage} />
-            <Route path="/movies/favorites" component={FavoritesMoviesPage} />
-            <Route path="/movies/:id" component={MoviePage} />
+            <Route path={ROUTES.INDEX} exact component={IndexPage} />
+            <Route path={ROUTES.MOVIES_POPULAR} component={PopularMoviesPage} />
+            <Route path={ROUTES.MOVIES_UPCOMING} component={UpcomingMoviesPage} />
+            <Route path={ROUTES.MOVIES_FAVORITES} component={FavoritesMoviesPage} />
+            <Route path={ROUTES.MOVIE} component={MoviePage} />
             <Route component={NotFoundPage} />
           </Switch>
         </main>

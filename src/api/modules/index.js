@@ -1,3 +1,4 @@
-import Movies from './Movies'
+import auth from './auth'
+import movies from './movies'
 
-export { Movies }
+export { auth, movies }
