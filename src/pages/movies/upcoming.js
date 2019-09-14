@@ -19,7 +19,8 @@ class UpcomingMoviesPage extends Component {
   async fetchUpcomingMoviesPage(pageNumber) {
     try {
       // eslint-disable-next-line camelcase
-      const { results } = await api.movies.fetchUpcoming({ page: pageNumber })
+      const { results } = await api.movies.fetchUpcoming(pageNumber)
+
       this.setState({
         upcomingMovies: results,
       })

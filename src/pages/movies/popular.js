@@ -8,25 +8,25 @@ class PopularMoviesPage extends Component {
   state = {
     popularMovies: [],
     activePage: 1,
-    totalCount: 0,
+    totalResults: 0,
   }
 
   async componentDidMount() {
     await this.fetchPopularMovies()
-    await api.auth.signup('qwe@qwe.qwe', 'qweqweqwe')
   }
 
   handlePageChange = async pageNumber => {
-    await this.fetchPopularMovies(pageNumber)
+    this.fetchPopularMovies(pageNumber)
   }
 
   async fetchPopularMovies(pageNumber) {
     try {
       // eslint-disable-next-line camelcase
-      const { results, total_results } = await api.movies.fetchPopular({ page: pageNumber })
+      const { results, total_results } = await api.movies.fetchPopular(pageNumber)
+
       this.setState({
         popularMovies: results,
-        totalCount: total_results,
+        totalResults: total_results,
       })
     } catch (error) {
       console.log(error)
@@ -34,7 +34,7 @@ class PopularMoviesPage extends Component {
   }
 
   render() {
-    const { popularMovies, activePage, totalCount } = this.state
+    const { popularMovies, activePage, totalResults } = this.state
 
     return (
       <section className="popular-movies">
@@ -42,7 +42,7 @@ class PopularMoviesPage extends Component {
         <Pagination
           activePage={activePage}
           itemsCountPerPage={20}
-          totalItemsCount={totalCount}
+          totalItemsCount={totalResults}
           onChange={this.handlePageChange}
         />
       </section>

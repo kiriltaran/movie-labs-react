@@ -9,11 +9,12 @@ class MoviePage extends Component {
     movie: null,
   }
 
-  async componentDidMount() {
-    await this.loadMovieDetails()
+  componentDidMount() {
+    this.loadMovieDetails()
   }
 
-  async componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps) {
+    // TODO
     const {
       match: {
         params: { id },
@@ -21,7 +22,7 @@ class MoviePage extends Component {
     } = this.props
 
     if (prevProps.match.params.id !== id) {
-      await this.loadMovieDetails()
+      this.loadMovieDetails()
     }
   }
 
@@ -32,7 +33,9 @@ class MoviePage extends Component {
           params: { id },
         },
       } = this.props
+
       const movie = await api.movies.fetchMovieDetails(id)
+
       this.setState({
         movie,
       })
