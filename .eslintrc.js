@@ -20,11 +20,12 @@ module.exports = {
       },
     ],
     'react/jsx-filename-extension': [
-      1,
+      2,
       {
         extensions: ['.js', '.jsx'],
       },
     ],
+    'react/state-in-constructor': [2, 'never'],
     'import/prefer-default-export': 'off',
   },
 }
