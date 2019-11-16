@@ -4,12 +4,6 @@ import { ROUTES } from './constants'
 import './App.css'
 
 import AppHeader from './components/AppHeader'
-import IndexPage from './pages/index'
-import NotFoundPage from './pages/notFound'
-import PopularMoviesPage from './pages/movies/popular'
-import UpcomingMoviesPage from './pages/movies/upcoming'
-import FavoritesMoviesPage from './pages/movies/favorites'
-import MoviePage from './pages/movies/movie'
 
 function App() {
   return (
@@ -18,12 +12,15 @@ function App() {
         <AppHeader />
         <main className="main">
           <Switch>
-            <Route path={ROUTES.INDEX} exact component={IndexPage} />
-            <Route path={ROUTES.MOVIES_POPULAR} component={PopularMoviesPage} />
-            <Route path={ROUTES.MOVIES_UPCOMING} component={UpcomingMoviesPage} />
-            <Route path={ROUTES.MOVIES_FAVORITES} component={FavoritesMoviesPage} />
-            <Route path={ROUTES.MOVIE} component={MoviePage} />
-            <Route component={NotFoundPage} />
+            <Route path={ROUTES.INDEX.path} exact component={ROUTES.INDEX.component} />
+            <Route path={ROUTES.MOVIES_POPULAR.path} component={ROUTES.MOVIES_POPULAR.component} />
+            <Route
+              path={ROUTES.MOVIES_UPCOMING.path}
+              component={ROUTES.MOVIES_UPCOMING.component}
+            />
+            <Route path={ROUTES.FAVORITES.path} component={ROUTES.FAVORITES.component} />
+            <Route path={ROUTES.MOVIE.path} component={ROUTES.MOVIE.component} />
+            <Route component={ROUTES.NOT_FOUND.component} />
           </Switch>
         </main>
       </div>

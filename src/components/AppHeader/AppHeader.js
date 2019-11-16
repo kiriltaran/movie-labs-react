@@ -6,7 +6,7 @@ import logoImg from '../../assets/logo.png'
 
 class AppHeader extends Component {
   state = {
-    navItems: [
+    navLinks: [
       {
         title: 'Popular',
         path: '/movies/popular',
@@ -17,20 +17,20 @@ class AppHeader extends Component {
       },
       {
         title: 'Favorites',
-        path: '/movies/favorites',
+        path: '/favorites',
       },
     ],
   }
 
   render() {
-    const { navItems } = this.state
+    const { navLinks } = this.state
     return (
       <header className="app-header">
         <Link to="/" className="logo">
           <img src={logoImg} alt="logo" className="logo__img" />
         </Link>
         <nav className="nav">
-          {navItems.map(navItem => (
+          {navLinks.map(navItem => (
             <NavLink
               to={navItem.path}
               key={navItem.path}

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './MovieDetails.css'
 
-import AppTag from '../AppTag'
+import AppTag from '../common/AppTag'
 
 function MovieDetails({ movie }) {
   return (

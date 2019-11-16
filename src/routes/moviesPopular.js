@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import Pagination from 'react-js-pagination'
-import api from '../../api'
+import api from '../api'
 
-import MoviesList from '../../components/MoviesList'
+import MoviesList from '../components/MoviesList'
 
-class PopularMoviesPage extends Component {
+class MoviesPopularRoute extends Component {
   state = {
     popularMovies: [],
     activePage: 1,
@@ -37,7 +37,7 @@ class PopularMoviesPage extends Component {
     const { popularMovies, activePage, totalResults } = this.state
 
     return (
-      <section className="popular-movies">
+      <section className="movies-popular">
         <MoviesList movies={popularMovies} />
         <Pagination
           activePage={activePage}
@@ -50,4 +50,4 @@ class PopularMoviesPage extends Component {
   }
 }
 
-export default PopularMoviesPage
+export default MoviesPopularRoute

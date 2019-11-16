@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 // import { Link } from 'react-router-dom'
 import './MoviesList.css'
 
-import AppCard from '../AppCard'
-import AppButton from '../AppButton'
+import AppCard from '../common/AppCard'
+import AppButton from '../common/AppButton'
 
 function MoviesList({ movies }) {
   return (

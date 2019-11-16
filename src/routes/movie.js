@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import ReactRouterPropTypes from 'react-router-prop-types'
-import api from '../../api'
+import api from '../api'
 
-import MovieDetails from '../../components/MovieDetails'
+import MovieDetails from '../components/MovieDetails'
 
-class MoviePage extends Component {
+class MovieRoute extends Component {
   state = {
     movie: null,
   }
@@ -51,8 +51,8 @@ class MoviePage extends Component {
   }
 }
 
-MoviePage.propTypes = {
+MovieRoute.propTypes = {
   match: ReactRouterPropTypes.match.isRequired,
 }
 
-export default MoviePage
+export default MovieRoute

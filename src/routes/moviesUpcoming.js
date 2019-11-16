@@ -1,24 +1,23 @@
 import React, { Component } from 'react'
-import api from '../../api'
+import api from '../api'
 
-import MoviesList from '../../components/MoviesList'
+import MoviesList from '../components/MoviesList'
 
-class UpcomingMoviesPage extends Component {
+class MoviesUpcomingRoute extends Component {
   state = {
     upcomingMovies: [],
   }
 
   async componentDidMount() {
-    await this.fetchUpcomingMoviesPage()
+    await this.fetchUpcominMovies()
   }
 
   handlePageClick = ({ selected }) => {
-    this.fetchUpcomingMoviesPage(selected)
+    this.fetchUpcominMovies(selected)
   }
 
-  async fetchUpcomingMoviesPage(pageNumber) {
+  async fetchUpcominMovies(pageNumber) {
     try {
-      // eslint-disable-next-line camelcase
       const { results } = await api.movies.fetchUpcoming(pageNumber)
 
       this.setState({
@@ -33,11 +32,11 @@ class UpcomingMoviesPage extends Component {
     const { upcomingMovies } = this.state
 
     return (
-      <section className="Upcoming-movies">
+      <section className="movies-upcoming">
         <MoviesList movies={upcomingMovies} />
       </section>
     )
   }
 }
 
-export default UpcomingMoviesPage
+export default MoviesUpcomingRoute
