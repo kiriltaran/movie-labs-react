@@ -4,7 +4,7 @@ const signup = (email, password) => {
   return firebaseClient.auth().createUserWithEmailAndPassword(email, password)
 }
 
-const signin = async (email, password) => {
+const signin = (email, password) => {
   return firebaseClient.auth().signInWithEmailAndPassword(email, password)
 }
 

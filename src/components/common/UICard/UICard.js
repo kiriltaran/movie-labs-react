@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './AppCard.css'
+import './UICard.css'
 
-function AppCard({ children }) {
-  return <div className="app-card">{children}</div>
+function UICard({ children }) {
+  return <div className="ui-card">{children}</div>
 }
 
-AppCard.propTypes = {
+UICard.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
 }
 
-export default AppCard
+export default UICard

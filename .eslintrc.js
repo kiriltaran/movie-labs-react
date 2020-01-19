@@ -8,7 +8,7 @@ module.exports = {
     sourceType: 'module',
   },
   extends: ['airbnb', 'plugin:prettier/recommended', 'prettier/react'],
-  plugins: ['babel'],
+  plugins: ['babel', 'react-hooks'],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -27,5 +27,7 @@ module.exports = {
     ],
     'react/state-in-constructor': [2, 'never'],
     'import/prefer-default-export': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
 }

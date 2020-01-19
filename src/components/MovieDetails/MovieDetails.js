@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './MovieDetails.css'
 
-import AppTag from '../common/AppTag'
+import UITag from '../common/UITag'
 
 function MovieDetails({ movie }) {
   return (
@@ -27,7 +27,7 @@ function MovieDetails({ movie }) {
           <div className="info-item__value">
             {movie.genres.map(genre => (
               <span key={genre.id} className="genre">
-                <AppTag>{genre.name}</AppTag>
+                <UITag>{genre.name}</UITag>
               </span>
             ))}
           </div>

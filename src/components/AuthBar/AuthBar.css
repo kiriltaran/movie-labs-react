@@ -1,0 +1,75 @@
+.auth-bar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  opacity: 0.5;
+}
+
+.auth-bar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  width: 600px;
+  height: 100vh;
+  background-color: #fff;
+}
+
+.auth-bar__form {
+  margin-bottom: 40px;
+}
+
+.or {
+  font-size: 0.8rem;
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 40px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border: none;
+  color: #202020;
+  cursor: pointer;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 0.5;
+  transition: opacity 300ms;
+}
+.fade-exit {
+  opacity: 0.5;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+.slide-enter {
+  right: -600px;
+}
+.slide-enter-active {
+  right: 0;
+  transition: right 300ms;
+}
+.slide-exit {
+  right: 0;
+}
+.slide-exit-active {
+  right: -600px;
+  transition: right 300ms;
+}
