@@ -1,7 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
-import api from '../../api'
 import './SigninForm.css'
 
 import UIButton from '../common/UIButton'
@@ -17,24 +17,18 @@ const validationSchema = yup.object().shape({
     .required(),
 })
 
-function SigninForm() {
+const SigninForm = ({ onSubmit }) => {
   const { register, handleSubmit, errors } = useForm({
     mode: 'onBlur',
     validationSchema,
   })
 
-  const onSubmit = async ({ email, password }) => {
-    try {
-      const user = await api.auth.signin(email, password)
-
-      console.log(user)
-    } catch (error) {
-      console.log(error)
-    }
+  const runSubmitCb = credentials => {
+    onSubmit(credentials)
   }
 
   return (
-    <form className="signin-form" onSubmit={handleSubmit(onSubmit)}>
+    <form className="signin-form" onSubmit={handleSubmit(runSubmitCb)}>
       <label htmlFor="email" className="signin-form-item">
         <div className="signin-form-item__label">Email</div>
         <input
@@ -66,6 +60,14 @@ function SigninForm() {
       <UIButton>Signin</UIButton>
     </form>
   )
+}
+
+SigninForm.propTypes = {
+  onSubmit: PropTypes.func,
+}
+
+SigninForm.defaultProps = {
+  onSubmit: () => {},
 }
 
 export default SigninForm

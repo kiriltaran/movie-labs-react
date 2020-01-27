@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import api from '../../api'
+import { userActions } from '../../store'
 
 import './AuthBar.css'
 
@@ -10,30 +13,56 @@ import UIButton from '../common/UIButton'
 import SigninForm from '../SigninForm'
 import SignupForm from '../SignupForm'
 
-function AuthBar({ visible, signup, onToggleForm, onClose }) {
+function AuthBar({ isVisible, isSignup, signup, signin, onToggleForm, onClose }) {
   useEffect(() => {
-    document.body.style.overflow = visible ? 'hidden' : null
-  }, [visible])
+    document.body.style.overflow = isVisible ? 'hidden' : null
+  }, [isVisible])
 
   const handleCloseClick = () => {
     onClose()
   }
 
+  const handleSignup = async ({ email, password }) => {
+    try {
+      const { user } = await api.auth.signup(email, password)
+
+      signup(user)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleSignin = async ({ email, password }) => {
+    try {
+      const { user } = await api.auth.signin(email, password)
+
+      signin(user)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <>
-      <CSSTransition in={visible} timeout={300} mountOnEnter unmountOnExit classNames="fade">
+      <CSSTransition in={isVisible} timeout={300} mountOnEnter unmountOnExit classNames="fade">
         <div className="auth-bar-overlay" />
       </CSSTransition>
-      <CSSTransition in={visible} timeout={300} mountOnEnter unmountOnExit classNames="slide">
+      <CSSTransition in={isVisible} timeout={300} mountOnEnter unmountOnExit classNames="slide">
         <div className="auth-bar">
           <button type="button" className="close-btn" onClick={handleCloseClick}>
             <FontAwesomeIcon icon={faTimes} size="lg" />
           </button>
-          <div className="auth-bar__form">{signup ? <SignupForm /> : <SigninForm />}</div>
+          <div className="auth-bar__form">
+            {isSignup ? (
+              <SignupForm onSubmit={handleSignup} />
+            ) : (
+              <SigninForm onSubmit={handleSignin} />
+            )}
+          </div>
           <div className="auth-bar__toggler">
             <div className="or">or</div>
-            <UIButton text onClick={() => onToggleForm()}>
-              Signin
+            <UIButton text onClick={onToggleForm}>
+              {isSignup ? 'Signin' : 'Signup'}
             </UIButton>
           </div>
         </div>
@@ -43,10 +72,15 @@ function AuthBar({ visible, signup, onToggleForm, onClose }) {
 }
 
 AuthBar.propTypes = {
-  visible: PropTypes.bool.isRequired,
-  signup: PropTypes.bool.isRequired,
+  isVisible: PropTypes.bool.isRequired,
+  isSignup: PropTypes.bool.isRequired,
+  signup: PropTypes.func.isRequired,
+  signin: PropTypes.func.isRequired,
   onToggleForm: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
 }
 
-export default AuthBar
+export default connect(
+  null,
+  { signin: userActions.signin, signup: userActions.signup },
+)(AuthBar)

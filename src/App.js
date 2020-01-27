@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { ROUTES } from './constants'
+import { Provider } from 'react-redux'
+import store from './store'
+import { routes } from './constants'
 import './App.css'
 
 import AppHeader from './components/AppHeader'
@@ -12,31 +14,38 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="app">
-        <AppHeader />
-        <button type="button" onClick={() => setIsAuthorized(true)}>
-          True
-        </button>
-        <main className="main">
-          <Switch>
-            <Route path={ROUTES.INDEX.path} exact component={ROUTES.INDEX.component} />
-            <Route path={ROUTES.MOVIES_POPULAR.path} component={ROUTES.MOVIES_POPULAR.component} />
-            <Route
-              path={ROUTES.MOVIES_UPCOMING.path}
-              component={ROUTES.MOVIES_UPCOMING.component}
-            />
-            <Route path={ROUTES.FAVORITES.path} component={ROUTES.FAVORITES.component} />
-            <Route path={ROUTES.MOVIE.path} component={ROUTES.MOVIE.component} />
-            <Route component={ROUTES.NOT_FOUND.component} />
-          </Switch>
-        </main>
-        <AuthBar
-          visible={isAuthorized}
-          signup={isSignupForm}
-          onToggleForm={() => setIsSignupForm(!isSignupForm)}
-          onClose={() => setIsAuthorized(false)}
-        />
-      </div>
+      <Provider store={store}>
+        <div className="app">
+          <AppHeader />
+          <button type="button" onClick={() => setIsAuthorized(true)}>
+            True
+          </button>
+          <main className="main">
+            <Switch>
+              <Route path={routes.INDEX.path} component={routes.INDEX.component} exact />
+              <Route
+                path={routes.MOVIES_POPULAR.path}
+                component={routes.MOVIES_POPULAR.component}
+                exact
+              />
+              <Route
+                path={routes.MOVIES_UPCOMING.path}
+                component={routes.MOVIES_UPCOMING.component}
+                exact
+              />
+              <Route path={routes.FAVORITES.path} component={routes.FAVORITES.component} exact />
+              <Route path={routes.MOVIE.path} component={routes.MOVIE.component} exact />
+              <Route component={routes.NOT_FOUND.component} />
+            </Switch>
+          </main>
+          <AuthBar
+            isVisible={isAuthorized}
+            isSignup={isSignupForm}
+            onToggleForm={() => setIsSignupForm(!isSignupForm)}
+            onClose={() => setIsAuthorized(false)}
+          />
+        </div>
+      </Provider>
     </BrowserRouter>
   )
 }

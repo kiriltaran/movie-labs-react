@@ -1,3 +1,4 @@
-import ROUTES from './routes'
+import actionTypes from './actionTypes'
+import routes from './routes'
 
-export { ROUTES }
+export { actionTypes, routes }
