@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Link, NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 import './AppHeader.css'
+
+import UIButton from '../common/UIButton'
 
 import logoImg from '../../assets/logo.png'
 
-const AppHeader = ({ user }) => {
+const AppHeader = ({ onAuth }) => {
+  const user = useSelector(state => state.userReducer.user)
+
   const [navItems] = useState([
     {
       title: 'Popular',
@@ -21,6 +27,10 @@ const AppHeader = ({ user }) => {
       path: '/favorites',
     },
   ])
+
+  const handleAuthClick = () => {
+    onAuth()
+  }
 
   return (
     <header className="app-header">
@@ -43,15 +53,14 @@ const AppHeader = ({ user }) => {
       </div>
       <div className="app-header__column">
         <div className="auth">
-          {/* <div className="auth-btn">
-            <button type="button" onClick={() => setIsAuthorized(true)}>
-              True
-            </button>
-          </div> */}
-          {user && (
+          {user ? (
             <div className="auth-account">
               <div className="auth-account__email">{user.email}</div>
             </div>
+          ) : (
+            <UIButton text onClick={handleAuthClick}>
+              <FontAwesomeIcon icon={faSignInAlt} size="lg" />
+            </UIButton>
           )}
         </div>
       </div>
@@ -60,17 +69,7 @@ const AppHeader = ({ user }) => {
 }
 
 AppHeader.propTypes = {
-  user: PropTypes.shape(),
+  onAuth: PropTypes.func.isRequired,
 }
 
-AppHeader.defaultProps = {
-  user: null,
-}
-
-const mapStateToProps = state => {
-  return {
-    user: state.user,
-  }
-}
-
-export default connect(mapStateToProps)(AppHeader)
+export default AppHeader

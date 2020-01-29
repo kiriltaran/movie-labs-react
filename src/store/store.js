@@ -1,7 +1,7 @@
 import { createStore, combineReducers } from 'redux'
 import { reducer as userReducer } from './user'
 
-const rootReducer = combineReducers({ user: userReducer })
+const rootReducer = combineReducers({ userReducer })
 
 export default createStore(
   rootReducer,

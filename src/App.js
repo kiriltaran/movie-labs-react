@@ -9,17 +9,13 @@ import AppHeader from './components/AppHeader'
 import AuthBar from './components/AuthBar'
 
 function App() {
-  const [isAuthorized, setIsAuthorized] = useState(false)
-  const [isSignupForm, setIsSignupForm] = useState(true)
+  const [isAuthBarVisible, setIsAuthBarVisible] = useState(false)
 
   return (
     <BrowserRouter>
       <Provider store={store}>
         <div className="app">
-          <AppHeader />
-          <button type="button" onClick={() => setIsAuthorized(true)}>
-            True
-          </button>
+          <AppHeader onAuth={() => setIsAuthBarVisible(true)} />
           <main className="main">
             <Switch>
               <Route path={routes.INDEX.path} component={routes.INDEX.component} exact />
@@ -38,12 +34,7 @@ function App() {
               <Route component={routes.NOT_FOUND.component} />
             </Switch>
           </main>
-          <AuthBar
-            isVisible={isAuthorized}
-            isSignup={isSignupForm}
-            onToggleForm={() => setIsSignupForm(!isSignupForm)}
-            onClose={() => setIsAuthorized(false)}
-          />
+          <AuthBar isVisible={isAuthBarVisible} onClose={() => setIsAuthBarVisible(false)} />
         </div>
       </Provider>
     </BrowserRouter>

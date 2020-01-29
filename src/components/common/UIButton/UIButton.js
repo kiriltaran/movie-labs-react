@@ -18,7 +18,7 @@ const UIButton = ({ children, type, text, onClick }) => {
 }
 
 UIButton.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
   text: PropTypes.bool,
   onClick: PropTypes.func,
