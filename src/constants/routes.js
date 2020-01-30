@@ -5,7 +5,7 @@ import FavoritesRoute from '../routes/favorites'
 import MovieRoute from '../routes/movie'
 import NotFoundRoute from '../routes/notFound'
 
-export default {
+const routes = {
   INDEX: {
     path: '/',
     component: IndexRoute,
@@ -30,3 +30,5 @@ export default {
     component: NotFoundRoute,
   },
 }
+
+export { routes }

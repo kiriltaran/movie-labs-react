@@ -8,4 +8,4 @@ const signin = (email, password) => {
   return firebaseClient.auth().signInWithEmailAndPassword(email, password)
 }
 
-export default { signup, signin }
+export { signup, signin }

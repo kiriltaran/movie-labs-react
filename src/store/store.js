@@ -1,10 +1,10 @@
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import thunk from 'redux-thunk'
 import { reducer as userReducer } from './user'
 
 const rootReducer = combineReducers({ userReducer })
 
-export default createStore(
-  rootReducer,
-  // eslint-disable-next-line no-underscore-dangle
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-)
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+
+export { store }

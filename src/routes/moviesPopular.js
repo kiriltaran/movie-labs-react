@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Pagination from 'react-js-pagination'
-import api from '../api'
+import * as api from '../api'
 
 import MoviesList from '../components/MoviesList'
 

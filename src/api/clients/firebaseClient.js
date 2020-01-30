@@ -9,4 +9,4 @@ const config = {
 
 const firebaseClient = firebase.initializeApp(config)
 
-export default firebaseClient
+export { firebaseClient }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactRouterPropTypes from 'react-router-prop-types'
-import api from '../api'
+import * as api from '../api'
 
 import MovieDetails from '../components/MovieDetails'
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import store from './store'
+import { store } from './store'
 import { routes } from './constants'
 import './App.css'
 

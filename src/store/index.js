@@ -1,6 +1,4 @@
-import store from './store'
-import { actions as userActions } from './user'
+import { store } from './store'
+import { actions as userActions, thunks as userThunks } from './user'
 
-export { userActions }
-
-export default store
+export { store, userActions, userThunks }

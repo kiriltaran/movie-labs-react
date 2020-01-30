@@ -1,4 +1,5 @@
-import actions from './actions'
-import reducer from './reducer'
+import { reducer } from './reducer'
+import * as actions from './actions'
+import * as thunks from './thunks'
 
-export { actions, reducer }
+export { actions, reducer, thunks }

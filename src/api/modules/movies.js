@@ -24,8 +24,4 @@ const fetchMovieDetails = id => {
   })
 }
 
-export default {
-  fetchPopular,
-  fetchUpcoming,
-  fetchMovieDetails,
-}
+export { fetchPopular, fetchUpcoming, fetchMovieDetails }

@@ -27,4 +27,4 @@ mdbClient.interceptors.response.use(
   },
 )
 
-export default mdbClient
+export { mdbClient }

@@ -4,8 +4,7 @@ import { useDispatch } from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import api from '../../api'
-import { userActions } from '../../store'
+import { userThunks } from '../../store'
 
 import './AuthBar.css'
 
@@ -25,22 +24,20 @@ function AuthBar({ isVisible, onClose }) {
     onClose()
   }
 
-  const handleSignup = async ({ email, password }) => {
+  const handleSignup = async credentials => {
     try {
-      const { user } = await api.auth.signup(email, password)
+      await dispatch(userThunks.signup(credentials))
 
-      dispatch(userActions.signup(user))
       onClose()
     } catch (error) {
       console.log(error)
     }
   }
 
-  const handleSignin = async ({ email, password }) => {
+  const handleSignin = async credentials => {
     try {
-      const { user } = await api.auth.signin(email, password)
+      await dispatch(userThunks.signin(credentials))
 
-      dispatch(userActions.signin(user))
       onClose()
     } catch (error) {
       console.log(error)
